@@ -1,0 +1,27 @@
+.container {
+    width: 928px;
+    height: 206px;
+    border: 1px solid #D8D8D8;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.left{
+    flex:1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px 0 0 10px;
+}
+.right{
+    flex:1;
+    padding: 20px;
+}
+.title{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.description{
+    font-size: 16px;
+}
