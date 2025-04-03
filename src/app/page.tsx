@@ -1,5 +1,6 @@
-import TripCard from "../components/tripcard";
+import Trips from "@/components/trips";
 import { Trip } from "@/types";
+import styles from "./page.module.css";
 
 export default async function Page() {
   const data: Response = await fetch(
@@ -8,18 +9,11 @@ export default async function Page() {
   const trips: Trip[] = await data.json();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <h1 style={{ textAlign: "center" }}>The places you dream of</h1>
-      <h2 style={{ textAlign: "center" }}>Let's live new adventures</h2>
-      {trips.map((trip) => (
-        <TripCard key={trip.id} trip={trip} />
-      ))}
+    <div className={styles.page}>
+      <h1 className={styles.text}>The places you dream of</h1>
+      <h2 className={styles.text}>Let's live new adventures</h2>
+      <Trips trips={trips} />
+      <div id="modal-root"></div>
     </div>
   );
 }

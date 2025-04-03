@@ -1,6 +1,6 @@
 .container {
     width: 928px;
-    height: 206px;
+    min-height: 206px;
     border: 1px solid #D8D8D8;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -24,4 +24,63 @@
 }
 .description{
     font-size: 16px;
+    margin-bottom: 10px;
+}
+.actions{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.seeDetails{
+    text-decoration: underline;
+    cursor: pointer;
+    flex: 5;
+}
+.edit{
+    text-decoration: underline;
+    cursor: pointer;
+    flex: 1;
+}
+.delete{
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.modalTitle{
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.modalStatus{
+    margin-bottom: 20px;
+}
+.itineraryTitle{
+   font-size: 24px;
+   font-weight: 400;
+   margin-bottom: 20px;
+}
+.itineraryItem{
+    display: flex;
+    gap: 5px;
+}
+.itineraryBullet{
+    background-color: black;
+    width: 2px;
+}
+.lastItineraryBullet{
+    background-color: black;
+    width: 2px;
+    height: 10px;
+    text-align: center;
+}
+.itineraryDay{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.itineraryDescription{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color:#898989;
 }
