@@ -6,6 +6,7 @@ import TripCard from "@/components/tripcard/index";
 import DescriptionModal from "@/components/descriptionModal";
 import FormModal from "@/components/formModal";
 import styles from "./styles.module.css";
+import Filter from "@/components/filter";
 
 type Props = {
   trips: Trip[];
@@ -118,38 +119,10 @@ const Trips = ({ trips }: Props) => {
         </form>
       </div>
 
-      <div className={styles.filter}>
-        <div
-          className={
-            selectedFilter === "all"
-              ? styles.selectedFilter
-              : styles.notSelectedFilter
-          }
-          onClick={() => setSelectedFilter("all")}
-        >
-          All
-        </div>
-        <div
-          className={
-            selectedFilter === "todo"
-              ? styles.selectedFilter
-              : styles.notSelectedFilter
-          }
-          onClick={() => setSelectedFilter("todo")}
-        >
-          Upcoming
-        </div>
-        <div
-          className={
-            selectedFilter === "done"
-              ? styles.selectedFilter
-              : styles.notSelectedFilter
-          }
-          onClick={() => setSelectedFilter("done")}
-        >
-          Completed
-        </div>
-      </div>
+      <Filter
+        selectedFilter={selectedFilter}
+        setSelectedFilter={setSelectedFilter}
+      />
 
       {currentTrips
         .filter(

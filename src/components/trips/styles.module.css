@@ -21,19 +21,3 @@
 .search{
     margin: 20px 0;
 }
-.filter{
-    display: flex;
-    flex-direction: row; 
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-.selectedFilter{
-    background-color: #F3F3F3;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-}
-.notSelectedFilter{
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-
-}
