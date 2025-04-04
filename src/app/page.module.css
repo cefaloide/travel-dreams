@@ -18,10 +18,10 @@
   justify-content: space-between;
 }
 .createTrip{
+  display: flex;
+  align-items: center;
   background: white;
-  padding: 10px 30px;
-  text-align: center;
-  display: inline-block;
   border-radius: 25px;
   cursor: pointer;
+  padding: 10px 30px;
 }

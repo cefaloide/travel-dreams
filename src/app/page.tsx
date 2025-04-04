@@ -20,7 +20,9 @@ export default async function Page() {
           priority
         />
 
-        <div className={styles.createTrip}>Create new trip</div>
+        <div className={styles.createTrip}>
+          <div>Create new trip</div>
+        </div>
       </div>
       <h1 className={styles.text}>The places you dream of</h1>
       <h2 className={styles.text}>Let's live new adventures</h2>
