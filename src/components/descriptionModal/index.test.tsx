@@ -27,7 +27,7 @@ const mockTrip: Trip = {
 const mockOnChangeStatus = jest.fn();
 const mockOnClose = jest.fn();
 
-const renderComponent = (headerImg?: string) => {
+const renderComponent = () => {
   const container = document.createElement("div");
   container.id = "modal-root";
   document.body.appendChild(container);
