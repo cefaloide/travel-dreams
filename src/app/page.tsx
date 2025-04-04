@@ -22,6 +22,7 @@ export default async function Page() {
 
         <div className={styles.createTrip}>
           <div>Create new trip</div>
+          {/* TODO: create new trip */}
         </div>
       </div>
       <h1 className={styles.text}>The places you dream of</h1>

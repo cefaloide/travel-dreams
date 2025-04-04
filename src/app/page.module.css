@@ -4,7 +4,6 @@
   align-items: center;
   padding: 10px 0;
   width: 928px;
-
 }
 .text{
   text-align: center;
@@ -16,6 +15,7 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  margin: 20px 0 60px;
 }
 .createTrip{
   display: flex;
