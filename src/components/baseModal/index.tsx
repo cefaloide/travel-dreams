@@ -25,6 +25,7 @@ const BaseModal = ({ onClose, children, headerImg }: Props) => {
           </div>
           {headerImg && (
             <div
+              role="img"
               className={styles.modalHeaderImg}
               style={{
                 backgroundImage: `url(${headerImg})`,

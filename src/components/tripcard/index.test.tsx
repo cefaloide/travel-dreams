@@ -98,7 +98,7 @@ describe("TripCard Component", () => {
       />
     );
 
-    const leftDiv = screen.getByRole("img", { hidden: true });
+    const leftDiv = screen.getByRole("img");
     expect(leftDiv).toHaveStyle(`background-image: url(${mockTrip.photo_url})`);
   });
 });
