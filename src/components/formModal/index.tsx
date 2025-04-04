@@ -1,7 +1,8 @@
 import { Trip } from "@/types";
-import Modal from "@/components/modal";
+import Modal from "@/components/baseModal";
 import styles from "./styles.module.css";
 import { useState } from "react";
+import ItineraryItem from "../itineraryItem";
 
 type Props = {
   trip?: Trip | null;
@@ -14,11 +15,20 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
     return null;
   }
 
-  const [title, setTitle] = useState(trip.title);
-  const [introduction, setIntroduction] = useState(trip.introduction);
-  const [description, setDescription] = useState(trip.description);
-  const [photo_url, setPhoto_url] = useState(trip.photo_url);
+  const [selectedTrip, setSelectedTrip] = useState<Trip>(trip);
   const [itinerary, setItinerary] = useState(trip.itinerary);
+
+  const onchangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setSelectedTrip({ ...selectedTrip, title: e.target.value });
+
+  const onChangeIntroduction = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+    setSelectedTrip({ ...selectedTrip, introduction: e.target.value });
+
+  const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+    setSelectedTrip({ ...selectedTrip, description: e.target.value });
+
+  const onChangePhotoUrl = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setSelectedTrip({ ...selectedTrip, photo_url: e.target.value });
 
   const updateItinerary = (
     selectedIndex: number,
@@ -28,10 +38,10 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
       description: string;
     }>
   ) => {
-    const updatedItinerary = itinerary.map((item, index) =>
+    const updatedItinerary = selectedTrip.itinerary.map((item, index) =>
       selectedIndex === index ? { ...item, ...updatedFields } : item
     );
-    setItinerary(updatedItinerary);
+    setSelectedTrip({ ...selectedTrip, itinerary: updatedItinerary });
   };
 
   const onChangeDay = (selectedDay: number, selectedIndex: number) => {
@@ -45,7 +55,7 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
     updateItinerary(selectedIndex, { location: selectedLocation });
   };
 
-  const onChangeDescription = (
+  const onChangeItineraryDescription = (
     selectedDescription: string,
     selectedIndex: number
   ) => {
@@ -53,16 +63,7 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
   };
 
   const handleOnsave = () => {
-    const updatedTrip = {
-      id: trip.id,
-      status: trip.status,
-      title,
-      introduction,
-      description,
-      photo_url,
-      itinerary,
-    };
-    onSave(updatedTrip);
+    onSave(selectedTrip);
   };
 
   return (
@@ -74,8 +75,8 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
           <input
             type="text"
             name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={selectedTrip.title}
+            onChange={onchangeTitle}
           />
         </div>
         <div className={styles.field}>
@@ -85,8 +86,8 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
           <textarea
             rows={2}
             name="introduction"
-            value={introduction}
-            onChange={(e) => setIntroduction(e.target.value)}
+            value={selectedTrip.introduction}
+            onChange={onChangeIntroduction}
             maxLength={240}
           />
         </div>
@@ -95,8 +96,8 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
           <textarea
             rows={5}
             name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={selectedTrip.description}
+            onChange={onChangeDescription}
             maxLength={240}
           />
         </div>
@@ -105,38 +106,21 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
           <input
             type="text"
             name="photo_url"
-            value={photo_url}
-            onChange={(e) => setPhoto_url(e.target.value)}
+            value={selectedTrip.photo_url}
+            onChange={onChangePhotoUrl}
           />
         </div>
       </form>
       Day by day itinerary
       {itinerary.map((item, index) => (
-        // TODO: fix lose focus
-        <div
-          className={styles.itineraryItem}
+        <ItineraryItem
+          item={item}
+          index={index}
           key={`${item.day}-${item.location}`}
-        >
-          <div>
-            <input
-              type="number"
-              value={item.day}
-              onChange={(e) => onChangeDay(Number(e.target.value), index)}
-            />
-          </div>
-          <div className={styles.itineraryDetails}>
-            <input
-              type="text"
-              value={item.location}
-              onChange={(e) => onChangeLocation(e.target.value, index)}
-            />
-            <textarea
-              rows={4}
-              value={item.description}
-              onChange={(e) => onChangeDescription(e.target.value, index)}
-            />
-          </div>
-        </div>
+          onChangeDay={onChangeDay}
+          onChangeLocation={onChangeLocation}
+          onChangeDescription={onChangeItineraryDescription}
+        />
       ))}
       <div className={styles.save} onClick={handleOnsave}>
         Save

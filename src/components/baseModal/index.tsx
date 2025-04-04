@@ -8,7 +8,7 @@ type Props = {
   headerImg?: string;
 };
 
-const Modal = ({ onClose, children, headerImg }: Props) => {
+const BaseModal = ({ onClose, children, headerImg }: Props) => {
   const handleCloseClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     onClose();
@@ -43,4 +43,4 @@ const Modal = ({ onClose, children, headerImg }: Props) => {
   );
 };
 
-export default Modal;
+export default BaseModal;

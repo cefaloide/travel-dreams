@@ -1,5 +1,5 @@
 import { Trip } from "@/types";
-import Modal from "@/components/modal";
+import Modal from "@/components/baseModal";
 import styles from "./styles.module.css";
 
 type Props = {

@@ -1,9 +1,6 @@
 import { Trip } from "@/types";
 import styles from "./styles.module.css";
-import Modal from "@/components/modal";
-import { useState } from "react";
-import DescriptionModal from "../descriptionModal";
-import EditModal from "../formModal";
+
 type Props = {
   trip: Trip;
   onDelete: (id: number) => void;

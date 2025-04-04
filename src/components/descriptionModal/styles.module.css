@@ -5,6 +5,8 @@
 }
 .modalStatus{
     margin-bottom: 20px;
+    cursor: pointer;
+    display: inline-block;
 }
 .description{
     font-size: 16px;

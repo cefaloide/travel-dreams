@@ -1,0 +1,13 @@
+.itineraryItem{
+    background-color: #F3F3F3;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 5px;
+}
+.itineraryDetails{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 100%;
+}

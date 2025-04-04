@@ -59,6 +59,7 @@ const Trips = ({ trips }: Props) => {
       trip.id === id ? { ...trip, status: "done" } : trip
     );
     setCurrentTrips(updatedTrips);
+    setSelectedTrip(updatedTrips.find((trip) => trip.id === id) || null);
   };
 
   useEffect(() => {
