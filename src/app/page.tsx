@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Trips from "@/components/trips";
 import { Trip } from "@/types";
 import styles from "./page.module.css";
@@ -11,22 +10,6 @@ export default async function Page() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.headerBar}>
-        <Image
-          src="/logo.svg"
-          alt="Exoticca logo"
-          width={48}
-          height={48}
-          priority
-        />
-
-        <div className={styles.createTrip}>
-          <div>Create new trip</div>
-          {/* TODO: create new trip */}
-        </div>
-      </div>
-      <h1 className={styles.text}>The places you dream of</h1>
-      <h2 className={styles.text}>Let's live new adventures</h2>
       <Trips trips={trips} />
       <div id="modal-root"></div>
     </div>

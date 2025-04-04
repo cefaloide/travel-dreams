@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Trip } from "@/types";
 import { useState, useEffect } from "react";
 import TripCard from "@/components/tripcard/index";
@@ -42,16 +43,36 @@ const Trips = ({ trips }: Props) => {
     setShowDescriptionModal(true);
   };
 
-  const handleShowFormModal = (trip: Trip) => {
-    setSelectedTrip(trip);
+  const handleShowFormModal = (trip?: Trip) => {
+    const emptyTrip: Trip = {
+      id: currentTrips.length + 1,
+      title: "",
+      introduction: "",
+      description: "",
+      status: "todo",
+      photo_url: "",
+      itinerary: [
+        {
+          day: 1,
+          location: "",
+          description: "",
+        },
+      ],
+    };
+    setSelectedTrip(trip || emptyTrip);
     setShowFormModal(true);
   };
 
   const onSaveEdit = (trip: Trip) => {
-    const updatedTrips = currentTrips.map((item) =>
-      item.id === trip.id ? { ...item, ...trip } : item
-    );
-    setCurrentTrips(updatedTrips);
+    if (currentTrips.find((item) => item.id === trip.id)) {
+      const updatedTrips = currentTrips.map((item) =>
+        item.id === trip.id ? { ...item, ...trip } : item
+      );
+      setCurrentTrips(updatedTrips);
+    } else {
+      setCurrentTrips([...currentTrips, trip]);
+    }
+
     setShowFormModal(false);
     setSelectedTrip(null);
   };
@@ -70,6 +91,21 @@ const Trips = ({ trips }: Props) => {
 
   return (
     <>
+      <div className={styles.headerBar}>
+        <Image
+          src="/logo.svg"
+          alt="Exoticca logo"
+          width={48}
+          height={48}
+          priority
+        />
+
+        <div className={styles.createTrip}>
+          <div onClick={() => handleShowFormModal()}>Create new trip</div>
+        </div>
+      </div>
+      <h1 className={styles.text}>The places you dream of</h1>
+      <h2 className={styles.text}>Let's live new adventures</h2>
       <div className={styles.search}>
         <form onSubmit={handleSearch}>
           <input

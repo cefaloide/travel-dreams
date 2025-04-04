@@ -116,6 +116,7 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
         </div>
       </form>
       Day by day itinerary
+      {/* TODO: add a button to add new itinerary item */}
       {trip.itinerary.length === 0 ? (
         <ItineraryItem
           index={0}
