@@ -5,18 +5,14 @@ import { useState } from "react";
 import ItineraryItem from "../itineraryItem";
 
 type Props = {
-  trip?: Trip | null;
+  trip: Trip;
   onSave: (trip: Trip) => void;
   onClose: () => void;
 };
 
 const FormModal = ({ trip, onSave, onClose }: Props) => {
-  if (!trip) {
-    return null;
-  }
-
   const [selectedTrip, setSelectedTrip] = useState<Trip>(trip);
-  const [itinerary, setItinerary] = useState(trip.itinerary);
+  const [itinerary] = useState(trip.itinerary);
 
   const onchangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
     setSelectedTrip({ ...selectedTrip, title: e.target.value });

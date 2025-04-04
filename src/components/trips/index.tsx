@@ -106,7 +106,7 @@ const Trips = ({ trips }: Props) => {
         </div>
       </div>
       <h1 className={styles.text}>The places you dream of</h1>
-      <h2 className={styles.text}>Let's live new adventures</h2>
+      <h2 className={styles.text}>Let&#39;s live new adventures</h2>
       <div className={styles.search}>
         <form onSubmit={handleSearch}>
           <input
@@ -146,7 +146,7 @@ const Trips = ({ trips }: Props) => {
         />
       )}
 
-      {showFormModal && (
+      {showFormModal && selectedTrip && (
         <FormModal
           trip={selectedTrip}
           onClose={() => setShowFormModal(false)}
