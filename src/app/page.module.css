@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 0;
-  width: 928px;
+  padding: 10px;
+  max-width: 928px;
 }
 .text{
   text-align: center;

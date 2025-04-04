@@ -75,6 +75,7 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
           <input
             type="text"
             name="title"
+            placeholder="Italy"
             value={selectedTrip.title}
             onChange={onchangeTitle}
           />
@@ -86,6 +87,7 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
           <textarea
             rows={2}
             name="introduction"
+            placeholder="From Rome to Venice..."
             value={selectedTrip.introduction}
             onChange={onChangeIntroduction}
             maxLength={240}
@@ -96,6 +98,7 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
           <textarea
             rows={5}
             name="description"
+            placeholder="Discover the wonders of the Roman empire..."
             value={selectedTrip.description}
             onChange={onChangeDescription}
             maxLength={240}
@@ -106,22 +109,34 @@ const FormModal = ({ trip, onSave, onClose }: Props) => {
           <input
             type="text"
             name="photo_url"
+            placeholder="Image URL"
             value={selectedTrip.photo_url}
             onChange={onChangePhotoUrl}
           />
         </div>
       </form>
       Day by day itinerary
-      {itinerary.map((item, index) => (
+      {trip.itinerary.length === 0 ? (
         <ItineraryItem
-          item={item}
-          index={index}
-          key={`${item.day}-${item.location}`}
+          index={0}
           onChangeDay={onChangeDay}
           onChangeLocation={onChangeLocation}
           onChangeDescription={onChangeItineraryDescription}
         />
-      ))}
+      ) : (
+        <>
+          {itinerary.map((item, index) => (
+            <ItineraryItem
+              item={item}
+              index={index}
+              key={`${item.day}-${item.location}`}
+              onChangeDay={onChangeDay}
+              onChangeLocation={onChangeLocation}
+              onChangeDescription={onChangeItineraryDescription}
+            />
+          ))}
+        </>
+      )}
       <div className={styles.save} onClick={handleOnsave}>
         Save
       </div>
