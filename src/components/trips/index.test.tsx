@@ -1,40 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { Trip } from "@/types";
 import Trips from "./index";
-
-const mockTrips: Trip[] = [
-  {
-    id: 1,
-    title: "Trip to Paris",
-    description: "A wonderful trip to Paris.",
-    photo_url: "https://example.com/paris.jpg",
-    introduction: "Welcome to Paris!",
-    status: "todo",
-    itinerary: [
-      {
-        day: 1,
-        location: "Eiffel Tower",
-        description: "A must-see landmark in Paris.",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "Trip to Rome",
-    description: "Explore the ancient city of Rome.",
-    photo_url: "https://example.com/rome.jpg",
-    introduction: "Welcome to Rome!",
-    status: "done",
-    itinerary: [
-      {
-        day: 1,
-        location: "Colosseum",
-        description: "A historic amphitheater.",
-      },
-    ],
-  },
-];
+import { mockTrips } from "@/__mocks__/mockTrips";
 
 beforeEach(() => {
   const container = document.createElement("div");
@@ -78,7 +45,7 @@ describe("Trips Component", () => {
     const createTripButton = screen.getByText("Create new trip");
     fireEvent.click(createTripButton);
 
-    expect(screen.getByText("Save")).toBeInTheDocument(); // Assuming "Save" is in the form modal
+    expect(screen.getByText("Save")).toBeInTheDocument();
   });
 
   it("opens the description modal when a trip card is clicked", () => {

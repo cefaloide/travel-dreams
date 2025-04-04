@@ -1,28 +1,8 @@
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { Trip } from "@/types";
 import DescriptionModal from "../descriptionModal";
-
-const mockTrip: Trip = {
-  id: 1,
-  title: "Trip to Paris",
-  description: "A wonderful trip to Paris.",
-  photo_url: "https://example.com/paris.jpg",
-  introduction: "Welcome to Paris!",
-  status: "todo",
-  itinerary: [
-    {
-      day: 1,
-      location: "Eiffel Tower",
-      description: "A must-see landmark in Paris.",
-    },
-    {
-      day: 2,
-      location: "Louvre Museum",
-      description: "Home to the Mona Lisa.",
-    },
-  ],
-};
+import { mockTrips } from "@/__mocks__/mockTrips";
+const mockTrip = mockTrips[0];
 
 const mockOnChangeStatus = jest.fn();
 const mockOnClose = jest.fn();

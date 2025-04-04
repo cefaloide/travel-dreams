@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { Trip } from "@/types";
 import Filter from "../filter";
 
 describe("Filter Component", () => {
