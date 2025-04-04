@@ -21,21 +21,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### What will Travel Dreams do in its MVP 🚀
 
-● It will have an initial view with the default list of trips received from the endpoint,
-including trip titles, details, and the thumbnail of the trip.
-● We will be able to filter by any text found on the cards, both by details and by title
-or description.
-● You will be able to select one of the cards, and it will show the details of the
-same, with all the information about the trip, including the itinerary and the large
-image of the trip. This should happen for both upcoming and previously
-completed trips.
-● From the initial view, you should be able to delete the trip and edit it.
-● You should be able to mark a trip as completed from the detailed view of the trip.
-
-● Bidirectional navigation between completed trips and those yet to be completed
-should be possible.
-● There will be a view where we can find the trips that you already completed in the
-past, possibly similar to the view of upcoming trips.
-● In this view, you will also be able to set a trip as upcoming, in case you want to
-repeat it. You never know 🙂.
-● The application should work inside a browser on any device.
+- It will have an initial view with the default list of trips received from the endpoint,
+  including trip titles, details, and the thumbnail of the trip.
+- We will be able to filter by any text found on the cards, both by details and by title
+  or description.
+- You will be able to select one of the cards, and it will show the details of the
+  same, with all the information about the trip, including the itinerary and the large
+  image of the trip. This should happen for both upcoming and previously
+  completed trips.
+- From the initial view, you should be able to delete the trip and edit it.
+- You should be able to mark a trip as completed from the detailed view of the trip.
+- Bidirectional navigation between completed trips and those yet to be completed
+  should be possible.
+- There will be a view where we can find the trips that you already completed in the
+  past, possibly similar to the view of upcoming trips.
+- In this view, you will also be able to set a trip as upcoming, in case you want to
+  repeat it. You never know 🙂.
+- The application should work inside a browser on any device.
