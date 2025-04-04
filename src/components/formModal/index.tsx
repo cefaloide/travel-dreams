@@ -4,12 +4,16 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 
 type Props = {
-  trip: Trip;
+  trip?: Trip | null;
   onSave: (trip: Trip) => void;
   onClose: () => void;
 };
 
-const EditModal = ({ trip, onSave, onClose }: Props) => {
+const FormModal = ({ trip, onSave, onClose }: Props) => {
+  if (!trip) {
+    return null;
+  }
+
   const [title, setTitle] = useState(trip.title);
   const [introduction, setIntroduction] = useState(trip.introduction);
   const [description, setDescription] = useState(trip.description);
@@ -141,4 +145,4 @@ const EditModal = ({ trip, onSave, onClose }: Props) => {
   );
 };
 
-export default EditModal;
+export default FormModal;

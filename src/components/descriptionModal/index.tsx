@@ -3,12 +3,16 @@ import Modal from "@/components/modal";
 import styles from "./styles.module.css";
 
 type Props = {
-  trip: Trip;
+  trip: Trip | null;
   onComplete: (id: number) => void;
   onClose: () => void;
 };
 
 const DescriptionModal = ({ trip, onComplete, onClose }: Props) => {
+  if (!trip) {
+    return null;
+  }
+
   return (
     <Modal onClose={onClose} headerImg={trip.photo_url}>
       <div className={styles.modalTitle}>{trip.title}</div>

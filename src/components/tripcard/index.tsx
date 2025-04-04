@@ -3,16 +3,19 @@ import styles from "./styles.module.css";
 import Modal from "@/components/modal";
 import { useState } from "react";
 import DescriptionModal from "../descriptionModal";
-import EditModal from "../editModal";
+import EditModal from "../formModal";
 type Props = {
   trip: Trip;
   onDelete: (id: number) => void;
-  onComplete: (id: number) => void;
+  showDescriptionModal: (trip: Trip) => void;
+  showFormModal: (trip: Trip) => void;
 };
-const TripCard = ({ trip, onDelete, onComplete }: Props) => {
-  const [showDescriptionModal, setShowDescriptionModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-
+const TripCard = ({
+  trip,
+  onDelete,
+  showDescriptionModal,
+  showFormModal,
+}: Props) => {
   return (
     <div className={styles.container}>
       <div
@@ -27,11 +30,11 @@ const TripCard = ({ trip, onDelete, onComplete }: Props) => {
         <div className={styles.actions}>
           <div
             className={styles.seeDetails}
-            onClick={() => setShowDescriptionModal(true)}
+            onClick={() => showDescriptionModal(trip)}
           >
             See trip details
           </div>
-          <div className={styles.edit} onClick={() => setShowEditModal(true)}>
+          <div className={styles.edit} onClick={() => showFormModal(trip)}>
             Edit
           </div>
           <div className={styles.delete} onClick={() => onDelete(trip.id)}>
@@ -39,21 +42,6 @@ const TripCard = ({ trip, onDelete, onComplete }: Props) => {
           </div>
         </div>
       </div>
-      {showDescriptionModal && (
-        <DescriptionModal
-          trip={trip}
-          onClose={() => setShowDescriptionModal(false)}
-          onComplete={onComplete}
-        />
-      )}
-
-      {showEditModal && (
-        <EditModal
-          trip={trip}
-          onClose={() => setShowEditModal(false)}
-          onSave={onSaveEdit}
-        />
-      )}
     </div>
   );
 };

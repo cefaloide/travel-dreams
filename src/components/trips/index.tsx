@@ -2,6 +2,8 @@
 import { Trip } from "@/types";
 import { useState, useEffect } from "react";
 import TripCard from "@/components/tripcard/index";
+import DescriptionModal from "@/components/descriptionModal";
+import FormModal from "@/components/formModal";
 
 type Props = {
   trips: Trip[];
@@ -9,6 +11,9 @@ type Props = {
 const Trips = ({ trips }: Props) => {
   const [currentTrips, setCurrentTrips] = useState<Trip[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showDescriptionModal, setShowDescriptionModal] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -28,6 +33,25 @@ const Trips = ({ trips }: Props) => {
   const handleDelete = (id: number) => {
     const filteredTrips = currentTrips.filter((trip) => trip.id !== id);
     setCurrentTrips(filteredTrips);
+  };
+
+  const handleShowDescriptionModal = (trip: Trip) => {
+    setSelectedTrip(trip);
+    setShowDescriptionModal(true);
+  };
+
+  const handleShowFormModal = (trip: Trip) => {
+    setSelectedTrip(trip);
+    setShowFormModal(true);
+  };
+
+  const onSaveEdit = (trip: Trip) => {
+    const updatedTrips = currentTrips.map((item) =>
+      item.id === trip.id ? { ...item, ...trip } : item
+    );
+    setCurrentTrips(updatedTrips);
+    setShowFormModal(false);
+    setSelectedTrip(null);
   };
 
   const handleOnComplete = (id: number) => {
@@ -60,9 +84,26 @@ const Trips = ({ trips }: Props) => {
           key={trip.id}
           trip={trip}
           onDelete={handleDelete}
-          onComplete={handleOnComplete}
+          showDescriptionModal={handleShowDescriptionModal}
+          showFormModal={handleShowFormModal}
         />
       ))}
+
+      {showDescriptionModal && (
+        <DescriptionModal
+          trip={selectedTrip}
+          onClose={() => setShowDescriptionModal(false)}
+          onComplete={handleOnComplete}
+        />
+      )}
+
+      {showFormModal && (
+        <FormModal
+          trip={selectedTrip}
+          onClose={() => setShowFormModal(false)}
+          onSave={onSaveEdit}
+        />
+      )}
     </>
   );
 };
