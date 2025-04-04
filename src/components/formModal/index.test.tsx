@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { Trip } from "@/types";
 import FormModal from "../formModal";
 import { mockTrips } from "@/__mocks__/mockTrips";
 const mockTrip = mockTrips[0];
