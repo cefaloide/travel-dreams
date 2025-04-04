@@ -56,9 +56,9 @@ const Trips = ({ trips }: Props) => {
     setSelectedTrip(null);
   };
 
-  const handleOnComplete = (id: number) => {
+  const handleonChangeStatus = (id: number, newStatus: string) => {
     const updatedTrips = currentTrips.map((trip) =>
-      trip.id === id ? { ...trip, status: "done" } : trip
+      trip.id === id ? { ...trip, status: newStatus } : trip
     );
     setCurrentTrips(updatedTrips);
     setSelectedTrip(updatedTrips.find((trip) => trip.id === id) || null);
@@ -133,7 +133,7 @@ const Trips = ({ trips }: Props) => {
         <DescriptionModal
           trip={selectedTrip}
           onClose={() => setShowDescriptionModal(false)}
-          onComplete={handleOnComplete}
+          onChangeStatus={handleonChangeStatus}
         />
       )}
 

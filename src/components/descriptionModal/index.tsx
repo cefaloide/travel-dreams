@@ -4,11 +4,11 @@ import styles from "./styles.module.css";
 
 type Props = {
   trip: Trip | null;
-  onComplete: (id: number) => void;
+  onChangeStatus: (id: number, newStatus: string) => void;
   onClose: () => void;
 };
 
-const DescriptionModal = ({ trip, onComplete, onClose }: Props) => {
+const DescriptionModal = ({ trip, onChangeStatus, onClose }: Props) => {
   if (!trip) {
     return null;
   }
@@ -17,9 +17,17 @@ const DescriptionModal = ({ trip, onComplete, onClose }: Props) => {
     <Modal onClose={onClose} headerImg={trip.photo_url}>
       <div className={styles.modalTitle}>{trip.title}</div>
       {trip.status === "done" ? (
-        <div className={styles.modalStatus}>✅ Complete</div>
+        <div
+          className={styles.modalStatus}
+          onClick={() => onChangeStatus(trip.id, "todo")}
+        >
+          ✅ Complete
+        </div>
       ) : (
-        <div className={styles.modalStatus} onClick={() => onComplete(trip.id)}>
+        <div
+          className={styles.modalStatus}
+          onClick={() => onChangeStatus(trip.id, "done")}
+        >
           ☑️ Mark as completed
         </div>
       )}
