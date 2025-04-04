@@ -16,11 +16,12 @@ const TripCard = ({
   return (
     <div className={styles.container}>
       <div
+        role="img"
         className={styles.left}
         style={{
           backgroundImage: `url(${trip.photo_url})`,
         }}
-      ></div>
+      />
       <div className={styles.right}>
         <div className={styles.title}>{trip.title}</div>
         <div className={styles.description}>{trip.description}</div>
